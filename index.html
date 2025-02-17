@@ -584,150 +584,374 @@
   <script>
     // Données du quiz générées à partir du questionnaire
     const quizData = [
-  {
-    "question": "Comment se nomme le mode de transfert de chaleur qui s'effectue par contact direct entre deux surfaces ?",
+ {
+    "question": "Qu’est-ce que la conduction ?",
     "options": [
-      "Conduction",
-      "Convection",
+      "Transfert de chaleur par contact direct entre matériaux",
+      "Propagation de chaleur par l’air ambiant",
+      "Déplacement de chaleur par liquides et gaz",
+      "Transmission d’énergie par radiation thermique",
+      "Phénomène limitant la propagation du feu",
+      "Aucune des réponses"
+    ],
+    "correctAnswers": [
+      "Transfert de chaleur par contact direct entre matériaux"
+    ]
+  },
+  {
+    "question": "Qu’est-ce que la convection ?",
+    "options": [
+      "Propagation du feu par déplacement de gaz chauds",
+      "Transfert de chaleur par contact direct entre solides",
+      "Transmission de chaleur par ondes électromagnétiques",
+      "Phénomène empêchant la chaleur de se propager",
+      "Transport de chaleur uniquement dans les liquides",
+      "Aucune des réponses"
+    ],
+    "correctAnswers": [
+      "Propagation du feu par déplacement de gaz chauds"
+    ]
+  },
+  {
+    "question": "Quels éléments favorisent la convection ?",
+    "options": [
+      "Déplacement d’air chaud",
+      "Accumulation de gaz chauds",
+      "Contact direct entre deux solides",
+      "Présence d’ondes électromagnétiques",
+      "Réflexion thermique des matériaux",
+      "Aucune des réponses"
+    ],
+    "correctAnswers": [
+      "Déplacement d’air chaud",
+      "Accumulation de gaz chauds"
+    ]
+  },
+  {
+    "question": "Quel mode de propagation du feu n’existe pas ?",
+    "options": [
       "Rayonnement thermique",
-      "Évaporation",
-      "Diffusion thermique",
+      "Convection inversée",
+      "Conduction thermique lente",
+      "Expansion thermique continue",
+      "Propagation par dissipation calorifique",
       "Aucune des réponses"
     ],
     "correctAnswers": [
-      "Conduction"
+      "Aucune des réponses"
     ]
   },
   {
-    "question": "Quel est le phénomène par lequel l'air chaud s'élève et l'air froid descend, favorisant ainsi la circulation de la chaleur ?",
+    "question": "Que devez-vous faire si vous êtes dans un local enfumé ?",
     "options": [
-      "Conduction",
-      "Convection",
-      "Rayonnement thermique",
-      "Sublimation",
-      "Diffusion",
+      "Baissez-vous le plus possible",
+      "Respirez profondément pour éviter l’intoxication",
+      "Avancez rapidement en restant debout",
+      "Trouvez une sortie en longeant les murs",
+      "Ouvrez toutes les fenêtres pour dissiper la fumée",
       "Aucune des réponses"
     ],
     "correctAnswers": [
-      "Convection"
+      "Baissez-vous le plus possible",
+      "Trouvez une sortie en longeant les murs"
     ]
   },
   {
-    "question": "Comment appelle-t-on le transfert de chaleur réalisé par des ondes électromagnétiques, comme les infrarouges, sans contact direct entre les surfaces ?",
+    "question": "Que devez-vous faire si vous êtes dans un local enfumé ?",
     "options": [
-      "Conduction",
-      "Convection",
-      "Rayonnement thermique",
-      "Transpiration",
-      "Combustion",
+      "Sortez rapidement en restant près du sol",
+      "Refermez la porte derrière vous",
+      "Ouvrez toutes les fenêtres pour évacuer la fumée",
+      "Déplacez-vous debout pour repérer plus vite la sortie",
+      "Utilisez un extincteur si possible",
       "Aucune des réponses"
     ],
     "correctAnswers": [
-      "Rayonnement thermique"
+      "Sortez rapidement en restant près du sol",
+      "Refermez la porte derrière vous",
+      "Utilisez un extincteur si possible"
     ]
   },
   {
-    "question": "Parmi les conséquences d'un incendie, laquelle de ces propositions n'est généralement pas constatée ?",
+    "question": "Que devez-vous faire si vous ne pouvez pas quitter le local ?",
     "options": [
-      "Destruction partielle ou totale des structures",
-      "Risques de blessures ou de décès",
-      "Pertes financières importantes",
-      "Perturbation des services d'urgence",
-      "Amélioration de la qualité de l'air",
+      "Fermez bien les portes et colmatez-les avec des linges humides si possible",
+      "Réfugiez-vous près d’une fenêtre pour signaler votre présence",
+      "Couvrez-vous le visage avec des linges humides",
+      "Restez debout pour mieux voir à travers la fumée",
+      "Ouvrez la porte pour laisser entrer l’air frais",
       "Aucune des réponses"
     ],
     "correctAnswers": [
-      "Amélioration de la qualité de l'air"
+      "Fermez bien les portes et colmatez-les avec des linges humides si possible",
+      "Réfugiez-vous près d’une fenêtre pour signaler votre présence",
+      "Couvrez-vous le visage avec des linges humides"
     ]
   },
   {
-    "question": "Lorsqu'un local est envahi par la fumée, quelle conduite est recommandée pour limiter l'inhalation de substances toxiques ?",
+    "question": "Que devez-vous faire si vous devez pénétrer dans un local ?",
     "options": [
-      "Rester debout et respirer normalement",
-      "Se déplacer en se baissant et en se couvrant la bouche",
-      "Ouvrir immédiatement toutes les fenêtres",
-      "Courir rapidement sans se protéger",
-      "Ignorer la fumée pour éviter la panique",
+      "Utilisez vos vêtements pour couvrir votre visage et vos mains",
+      "Ne pénétrez pas dans un local en feu sauf si vous êtes qualifié et équipé",
+      "Entrez immédiatement sans précaution pour secourir les victimes",
+      "Ouvrez toutes les portes et fenêtres dès votre entrée",
+      "Évitez toute protection pour mieux respirer à l’intérieur",
       "Aucune des réponses"
     ],
     "correctAnswers": [
-      "Se déplacer en se baissant et en se couvrant la bouche"
+      "Utilisez vos vêtements pour couvrir votre visage et vos mains",
+      "Ne pénétrez pas dans un local en feu sauf si vous êtes qualifié et équipé"
     ]
   },
   {
-    "question": "Si vous êtes coincé dans un local en feu et que vous ne pouvez pas évacuer, quelle mesure est préconisée pour limiter l'entrée de fumée ?",
+    "question": "Que devez-vous faire si vous devez pénétrer dans un local ?",
     "options": [
-      "Laisser la porte ouverte pour favoriser la ventilation",
-      "Ouvrir plusieurs fenêtres pour créer un courant d'air",
-      "Couper l'électricité, fermer la porte et calfeutrer les interstices",
-      "Utiliser un ventilateur pour extraire la fumée",
-      "Se déplacer vers le centre de la pièce",
+      "Retenez votre respiration si le local est enfumé et non ventilé (max 30 secondes)",
+      "Ne pénétrez pas si une fuite de gaz est suspectée",
+      "Assurez-vous que la vanne d’arrivée du gaz est bien fermée",
+      "Allumez une lampe de poche pour mieux voir en cas de fuite de gaz",
+      "Pénétrez immédiatement sans précaution pour secourir les victimes",
       "Aucune des réponses"
     ],
     "correctAnswers": [
-      "Couper l'électricité, fermer la porte et calfeutrer les interstices"
+      "Retenez votre respiration si le local est enfumé et non ventilé (max 30 secondes)",
+      "Ne pénétrez pas si une fuite de gaz est suspectée",
+      "Assurez-vous que la vanne d’arrivée du gaz est bien fermée"
     ]
   },
   {
-    "question": "Lors de l'appel aux services d'urgence pour signaler un incendie, quelle information doit être communiquée en priorité ?",
+    "question": "Quels sont les principes à respecter lors du dégagement d’une victime ?",
     "options": [
-      "Le nombre exact d'extincteurs disponibles",
-      "L'adresse précise et la nature du sinistre",
-      "La liste des personnes présentes sur les lieux",
-      "Le type de matériaux en combustion",
-      "Les conditions météorologiques actuelles",
+      "La priorité est d’assurer sa propre sécurité",
+      "La victime doit être visible et facile à atteindre",
+      "Éviter d’aggraver une lésion possible de la colonne vertébrale",
+      "Déplacer la victime vers un endroit plus confiné",
+      "Utiliser uniquement les bras pour soulever la victime",
       "Aucune des réponses"
     ],
     "correctAnswers": [
-      "L'adresse précise et la nature du sinistre"
+      "La priorité est d’assurer sa propre sécurité",
+      "La victime doit être visible et facile à atteindre",
+      "Éviter d’aggraver une lésion possible de la colonne vertébrale"
     ]
   },
   {
-    "question": "Parmi les actions à entreprendre en cas d'incendie, laquelle doit être réalisée en premier ?",
+    "question": "Quels points sont importants pour le dégagement d’une victime allongée au sol ?",
     "options": [
-      "Tenter d'éteindre le feu seul avant d'appeler à l'aide",
-      "Attendre d'avoir des informations supplémentaires avant d'agir",
-      "Appeler immédiatement les secours (par exemple, le 18 ou le 112)",
-      "Ouvrir toutes les issues pour faciliter la ventilation",
-      "Se déplacer vers le centre du bâtiment pour trouver un abri",
+      "Privilégier le déplacement par traction plutôt que le soulèvement",
+      "Utiliser des prises solides comme les poignets ou les chevilles",
+      "Toujours soulever la victime par la tête pour éviter les blessures",
+      "Tourner la victime sur le côté avant de la déplacer",
+      "Dégager la victime le plus loin possible du danger",
       "Aucune des réponses"
     ],
     "correctAnswers": [
-      "Appeler immédiatement les secours (par exemple, le 18 ou le 112)"
+      "Privilégier le déplacement par traction plutôt que le soulèvement",
+      "Utiliser des prises solides comme les poignets ou les chevilles",
+      "Dégager la victime le plus loin possible du danger"
     ]
   },
   {
-    "question": "Selon les principes du transfert de chaleur par conduction, laquelle des affirmations suivantes est FAUSSE ?",
+    "question": "Dans quels cas un dégagement d’urgence doit-il être effectué ?",
     "options": [
-      "La conduction nécessite un contact direct entre les matériaux.",
-      "La conduction est généralement plus efficace dans les métaux.",
-      "La conduction implique le transfert d'énergie par vibration des molécules.",
-      "La conduction se produit uniquement dans les liquides.",
-      "La conduction peut se produire dans tous les états de la matière.",
+      "Lorsque la victime est en danger immédiat et vital",
+      "Si l’environnement présente un risque incontrôlable",
+      "Si la victime est consciente et peut se déplacer seule",
+      "Pour transporter plus rapidement une victime blessée",
+      "Dans tous les cas, peu importe la situation",
       "Aucune des réponses"
     ],
     "correctAnswers": [
-      "La conduction se produit uniquement dans les liquides."
+      "Lorsque la victime est en danger immédiat et vital",
+      "Si l’environnement présente un risque incontrôlable"
     ]
   },
   {
-    "question": "Quel est l'effet principal de la fumée sur la visibilité lors d'un incendie ?",
+    "question": "Que signifie la première étape du C.R.A.C.A.R.E.E.P ?",
     "options": [
-      "Elle améliore la visibilité en éclaircissant l'atmosphère.",
-      "Elle ne modifie pas la visibilité.",
-      "Elle réduit considérablement la visibilité.",
-      "Elle rend la visibilité variable selon la température.",
-      "Elle permet de mieux distinguer les sources de chaleur.",
+      "Compte rendu radio une fois sur place et à chaque étape",
+      "Coupure immédiate de l’électricité",
+      "Evacuation des locaux sans vérification",
+      "Déplacement rapide sans analyse de la situation",
+      "Arrosage immédiat de la zone en feu",
       "Aucune des réponses"
     ],
     "correctAnswers": [
-      "Elle réduit considérablement la visibilité."
+      "Compte rendu radio une fois sur place et à chaque étape"
     ]
-  
+  },
+  {
+    "question": "Quelles actions sont réalisées avant d’attaquer le feu ?",
+    "options": [
+      "Relevé de point chaud avec la main sur la porte",
+      "Analyse de la situation et identification des risques",
+      "Coupure des énergies et des fluides",
+      "Extinction immédiate sans précaution",
+      "Ouverture rapide des portes et fenêtres",
+      "Aucune des réponses"
+    ],
+    "correctAnswers": [
+      "Relevé de point chaud avec la main sur la porte",
+      "Analyse de la situation et identification des risques",
+      "Coupure des énergies et des fluides"
+    ]
+  },
+  {
+    "question": "Quelles mesures sont prises après l’extinction du feu ?",
+    "options": [
+      "Refroidissement abondant des murs et plafonds",
+      "Evacuation des fumées et des gaz chauds",
+      "Evacuation des personnes des locaux voisins",
+      "Etablissement d’un périmètre de sécurité",
+      "Remise immédiate en service des installations électriques",
+      "Aucune des réponses"
+    ],
+    "correctAnswers": [
+      "Refroidissement abondant des murs et plafonds",
+      "Evacuation des fumées et des gaz chauds",
+      "Evacuation des personnes des locaux voisins",
+      "Etablissement d’un périmètre de sécurité"
+    ]
+  },
+  {
+    "question": "Quels sont les critères de classification du comportement au feu ?",
+    "options": [
+      "Résistance au feu",
+      "Réaction au feu",
+      "Conductivité thermique",
+      "Température de fusion",
+      "Masse volumique",
+      "Aucune des réponses"
+    ],
+    "correctAnswers": [
+      "Résistance au feu",
+      "Réaction au feu"
+    ]
+  },
+  {
+    "question": "Qu’est-ce que la résistance au feu d’un élément de construction ?",
+    "options": [
+      "Temps pendant lequel l’élément conserve sa fonction malgré l’incendie",
+      "Capacité à ne pas s’enflammer au contact d’une flamme",
+      "Aptitude à ralentir la propagation des fumées",
+      "Capacité à absorber la chaleur sans la transmettre",
+      "Temps nécessaire pour qu’il s’effondre sous l’effet du feu",
+      "Aucune des réponses"
+    ],
+    "correctAnswers": [
+      "Temps pendant lequel l’élément conserve sa fonction malgré l’incendie"
+    ]
+  },
+  {
+    "question": "Quels éléments de construction doivent être résistants au feu ?",
+    "options": [
+      "Planchers et murs",
+      "Cloisons et poutres",
+      "Conduits et parois",
+      "Blocs porte et plafonds",
+      "Vitres ordinaires",
+      "Aucune des réponses"
+    ],
+    "correctAnswers": [
+      "Planchers et murs",
+      "Cloisons et poutres",
+      "Conduits et parois",
+      "Blocs porte et plafonds"
+    ]
+  },
+  {
+    "question": "Quels critères définissent l’efficacité d’un élément résistant au feu ?",
+    "options": [
+      "Résistance mécanique",
+      "Étanchéité aux flammes et gaz chauds",
+      "Isolation thermique",
+      "Densité du matériau",
+      "Réflexion lumineuse",
+      "Aucune des réponses"
+    ],
+    "correctAnswers": [
+      "Résistance mécanique",
+      "Étanchéité aux flammes et gaz chauds",
+      "Isolation thermique"
+    ]
+  },
+  {
+    "question": "Quel facteur n’influence pas directement la résistance au feu d’un élément ?",
+    "options": [
+      "Résistance mécanique",
+      "Étanchéité aux flammes",
+      "Masse volumique du matériau",
+      "Isolation thermique",
+      "Conductivité électrique",
+      "Aucune des réponses"
+    ],
+    "correctAnswers": [
+      "Conductivité électrique"
+    ]
+  },
+  {
+    "question": "Quelles sont les principales catégories de résistance au feu ?",
+    "options": [
+      "Stable au feu (SF)",
+      "Pare-flamme (PF)",
+      "Coupe-feu (CF)",
+      "Étanche au feu (EF)",
+      "Auto-extinguible (AE)",
+      "Aucune des réponses"
+    ],
+    "correctAnswers": [
+      "Stable au feu (SF)",
+      "Pare-flamme (PF)",
+      "Coupe-feu (CF)"
+    ]
+  },
+  {
+    "question": "Quelle caractéristique définit un élément stable au feu (SF) ?",
+    "options": [
+      "Résistance mécanique",
+      "Étanchéité aux flammes",
+      "Isolation thermique",
+      "Réflexion de la chaleur",
+      "Propagation contrôlée du feu",
+      "Aucune des réponses"
+    ],
+    "correctAnswers": [
+      "Résistance mécanique"
+    ]
+  },
+  {
+    "question": "Quelles sont les caractéristiques d’un élément pare-flamme (PF) ?",
+    "options": [
+      "Résistance mécanique",
+      "Étanchéité aux flammes",
+      "Étanchéité aux gaz inflammables",
+      "Résistance aux chocs thermiques",
+      "Absorption des gaz de combustion",
+      "Aucune des réponses"
+    ],
+    "correctAnswers": [
+      "Résistance mécanique",
+      "Étanchéité aux flammes",
+      "Étanchéité aux gaz inflammables"
+    ]
+  },
+  {
+    "question": "Quelles sont les caractéristiques d’un élément coupe-feu (CF) ?",
+    "options": [
+      "Résistance mécanique",
+      "Étanchéité aux flammes",
+      "Étanchéité aux gaz inflammables",
+      "Isolation thermique",
+      "Évacuation des fumées",
+      "Aucune des réponses"
+    ],
+    "correctAnswers": [
+      "Résistance mécanique",
+      "Étanchéité aux flammes",
+      "Étanchéité aux gaz inflammables",
+      "Isolation thermique"
+    ]
   }
-
-
-
 ];
 
 
@@ -875,7 +1099,7 @@
           } else {
             showResultPage();
           }
-        }, 2000);
+        }, 1000);
       } else {
         const selectedSound = (Math.random() < 0.5) ? incorrectSound : incorrectSound2;
         selectedSound.currentTime = 0;
@@ -1030,6 +1254,12 @@ document.addEventListener("DOMContentLoaded", function(){
       indexModal.style.display = "block";
     });
   }
+});
+    window.addEventListener('beforeunload', function (e) {
+  // Annule l'événement comme indiqué par la norme.
+  e.preventDefault();
+  // Chrome nécessite que returnValue soit défini.
+  e.returnValue = '';
 });
 
   </script>
