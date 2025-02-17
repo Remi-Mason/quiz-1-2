@@ -585,479 +585,13 @@
     // Données du quiz générées à partir du questionnaire
     const quizData = [
   {
-    "question": "Quelle est la proportion d’oxygène dans l’air ?",
-    "options": [
-      "78 %",
-      "21 %",
-      "14 %",
-      "1 %",
-      "25 %",
-      "Aucune des réponses"
-    ],
-    "correctAnswers": [
-      "21 %"
-    ]
-  },
-  {
-    "question": "Quelle est la proportion d’azote dans l’air ?",
-    "options": [
-      "21 %",
-      "14 %",
-      "78 %",
-      "25 %",
-      "1 %",
-      "Aucune des réponses"
-    ],
-    "correctAnswers": [
-      "78 %"
-    ]
-  },
-  {
-    "question": "Quelle est la teneur minimale en oxygène permettant la combustion ?",
-    "options": [
-      "14 %",
-      "1 %",
-      "21 %",
-      "78 %",
-      "25 %",
-      "Aucune des réponses"
-    ],
-    "correctAnswers": [
-      "14 %"
-    ]
-  },
-  {
-    "question": "Quelle est la proportion de gaz rares dans l’air ?",
-    "options": [
-      "78 %",
-      "14 %",
-      "21 %",
-      "1 %",
-      "25 %",
-      "Aucune des réponses"
-    ],
-    "correctAnswers": [
-      "1 %"
-    ]
-  },
-  {
-    "question": "Quels sont les trois éléments du « triangle du feu » ?",
-    "options": [
-      "Combustible",
-      "Comburant (oxygène)",
-      "Azote",
-      "Énergie d’activation (chaleur)",
-      "Gaz rares",
-      "Aucune des réponses"
-    ],
-    "correctAnswers": [
-      "Combustible",
-      "Comburant (oxygène)",
-      "Énergie d’activation (chaleur)"
-    ]
-  },
-  {
-    "question": "Comment définit-on le feu ?",
-    "options": [
-      "Une réaction d’oxydation qui dégage chaleur et lumière",
-      "Un phénomène exclusivement dû à la foudre",
-      "Un simple mouvement d’air chaud",
-      "Une réaction chimique qui ne dégage aucune chaleur",
-      "Une réaction de fusion entre gaz rares",
-      "Aucune des réponses"
-    ],
-    "correctAnswers": [
-      "Une réaction d’oxydation qui dégage chaleur et lumière"
-    ]
-  },
-  {
-    "question": "Quelle est la plage de température de la flamme ?",
-    "options": [
-      "De 14 °C à 25 °C",
-      "De 300 °C à 500 °C",
-      "De 100 °C à 200 °C",
-      "De 2500 °C à 3000 °C",
-      "De 800 °C à 1200 °C",
-      "Aucune des réponses"
-    ],
-    "correctAnswers": [
-      "De 800 °C à 1200 °C"
-    ]
-  },
-  {
-    "question": "Le « point éclair » est :",
-    "options": [
-      "La température à partir de laquelle le combustible s’enflamme en présence d’une source d’ignition",
-      "La température à laquelle le combustible brûle spontanément sans source d’ignition",
-      "Toujours égale à 800 °C",
-      "Forcément inférieure à 14 %",
-      "Synonyme de point d’inflammation",
-      "Aucune des réponses"
-    ],
-    "correctAnswers": [
-      "La température à partir de laquelle le combustible s’enflamme en présence d’une source d’ignition"
-    ]
-  },
-  {
-    "question": "Le « point d’inflammation » (ou point de flamme) est :",
-    "options": [
-      "Toujours plus bas que le point éclair",
-      "La température à laquelle le combustible continue de brûler même sans source d’ignition",
-      "Égale à 1 %",
-      "Toujours inférieur à 100 °C",
-      "Une température qui ne peut pas dépasser 300 °C",
-      "Aucune des réponses"
-    ],
-    "correctAnswers": [
-      "La température à laquelle le combustible continue de brûler même sans source d’ignition"
-    ]
-  },
-  {
-    "question": "Qu’arrive-t-il si l’un des éléments du triangle du feu manque ?",
-    "options": [
-      "Le feu ne peut pas démarrer ou s’arrête",
-      "La température de la flamme augmente",
-      "Le feu se propage plus rapidement",
-      "L’azote remplace l’oxygène",
-      "Les gaz rares prennent le relais",
-      "Aucune des réponses"
-    ],
-    "correctAnswers": [
-      "Le feu ne peut pas démarrer ou s’arrête"
-    ]
-  },
-  {
-    "question": "Pourquoi la flamme se développe-t-elle dans le temps et l’espace ?",
-    "options": [
-      "Les fumées chaudes montent, laissant l’air frais arriver",
-      "La chaleur favorise la pyrolyse de nouvelles zones",
-      "L’azote se transforme en oxygène",
-      "Les gaz rares créent un effet de surpression",
-      "Le point éclair devient nul",
-      "Aucune des réponses"
-    ],
-    "correctAnswers": [
-      "Les fumées chaudes montent, laissant l’air frais arriver",
-      "La chaleur favorise la pyrolyse de nouvelles zones"
-    ]
-  },
-  {
-    "question": "Parmi les caractéristiques d’un combustible, laquelle (ou lesquelles) est (sont) exacte(s) ?",
-    "options": [
-      "Il doit dégager des vapeurs inflammables à une certaine température",
-      "Il ne peut jamais se vaporiser",
-      "Il présente un point éclair et un point d’inflammation",
-      "Il ne peut se consumer qu’à moins de 14 % d’oxygène",
-      "Il est ininflammable en dessous de 800 °C",
-      "Aucune des réponses"
-    ],
-    "correctAnswers": [
-      "Il doit dégager des vapeurs inflammables à une certaine température",
-      "Il présente un point éclair et un point d’inflammation"
-    ]
-  },
-  {
-    "question": "Quel est le rôle de l'azote dans la combustion ?",
-    "options": [
-      "Il alimente la combustion",
-      "Il favorise l'oxydation",
-      "Il participe au triangle du feu",
-      "Il améliore la température de la flamme",
-      "Il accélère la réaction de pyrolyse",
-      "Aucune des réponses"
-    ],
-    "correctAnswers": [
-      "Aucune des réponses"
-   ]
-  }, 
-  {
-    "question": "Parmi les combustibles suivants, lequel possède le point d’auto-inflammation le plus élevé (en °C) ?",
-    "options": [
-      "Essence (280 °C)",
-      "Gazole (220 °C)",
-      "Kérosène (210 °C)",
-      "Acétone (540 °C)",
-      "Fioul (250 °C)",
-      "Aucune de ces réponses"
-    ],
-    "correctAnswers": [
-      "Acétone (540 °C)"
-    ]
-  },
-  {
-    "question": "Le pouvoir calorifique d’un combustible, exprimé en kJ/kg, correspond à :",
-    "options": [
-      "La température minimale d’auto-inflammation",
-      "La quantité de chaleur dégagée par la combustion d’une unité de masse",
-      "La quantité de gaz libérée par la combustion",
-      "La température d’ébullition du combustible",
-      "Le volume d’oxygène requis pour la combustion",
-      "Aucune de ces réponses"
-    ],
-    "correctAnswers": [
-      "La quantité de chaleur dégagée par la combustion d’une unité de masse"
-    ]
-  },
-  {
-    "question": "Le potentiel calorifique d’un combustible est :",
-    "options": [
-      "La somme du pouvoir calorifique et du point d’éclair",
-      "La capacité du combustible à s’enflammer sous pression uniquement",
-      "L’énergie totale susceptible d’être libérée lors de la combustion complète d’une certaine quantité",
-      "La vitesse de propagation de la flamme dans le matériau",
-      "La température de la flamme en conditions idéales",
-      "Aucune de ces réponses"
-    ],
-    "correctAnswers": [
-      "L’énergie totale susceptible d’être libérée lors de la combustion complète d’une certaine quantité"
-    ]
-  },
-  {
-    "question": "Au sujet de la combustion des gaz, quelle affirmation est correcte ?",
-    "options": [
-      "Elle ne nécessite pas d’oxygène",
-      "Elle survient toujours en dessous de 0 °C",
-      "Elle produit systématiquement un résidu solide",
-      "Elle peut être très rapide et dépend de la pression et du mélange air/gaz",
-      "Elle n’émet jamais de chaleur",
-      "Aucune de ces réponses"
-    ],
-    "correctAnswers": [
-      "Elle peut être très rapide et dépend de la pression et du mélange air/gaz"
-    ]
-  },
-  {
-    "question": "Quelle description correspond à un feu de classe A ?",
-    "options": [
-      "Feu de gaz inflammables (butane, propane, gaz naturel, etc.)",
-      "Feu de liquides ou solides liquéfiables (essence, alcool, etc.)",
-      "Feu de métaux (magnésium, sodium, etc.)",
-      "Feu d’huiles et de graisses de cuisson (friture, etc.)",
-      "Feu de matériaux solides produisant des braises (bois, papier, etc.)",
-      "Aucune de ces réponses"
-    ],
-    "correctAnswers": [
-      "Feu de matériaux solides produisant des braises (bois, papier, etc.)"
-    ]
-  },
-  {
-    "question": "Quelle méthode d’extinction est généralement adaptée à un feu de classe A ?",
-    "options": [
-      "Étouffement au CO₂ uniquement",
-      "Refroidissement à l’eau pour abaisser la température et arrêter la pyrolyse",
-      "Projection de sable pour neutraliser le métal en fusion",
-      "Extinction par mousse spécialement conçue pour les huiles de cuisson",
-      "Coupe de l’alimentation en gaz",
-      "Aucune de ces réponses"
-    ],
-    "correctAnswers": [
-      "Refroidissement à l’eau pour abaisser la température et arrêter la pyrolyse"
-    ]
-  },
-  {
-    "question": "Quelle description correspond à un feu de classe B ?",
-    "options": [
-      "Feu de matériaux solides produisant des braises (bois, papier, etc.)",
-      "Feu de gaz inflammables (butane, propane, gaz naturel, etc.)",
-      "Feu de liquides ou solides liquéfiables (essence, alcool, etc.)",
-      "Feu de métaux (magnésium, sodium, etc.)",
-      "Feu d’huiles et de graisses de cuisson (friture, etc.)",
-      "Aucune de ces réponses"
-    ],
-    "correctAnswers": [
-      "Feu de liquides ou solides liquéfiables (essence, alcool, etc.)"
-    ]
-  },
-  {
-    "question": "Quelle précaution est recommandée pour éteindre un feu de classe B ?",
-    "options": [
-      "Utiliser un extincteur à poudre pour métaux",
-      "Employer une couverture anti-feu pour étouffer des braises",
-      "Projeter de l’eau abondamment",
-      "Utiliser une mousse ou un agent émulseur pour isoler le combustible de l’air",
-      "Couper l’alimentation électrique",
-      "Aucune de ces réponses"
-    ],
-    "correctAnswers": [
-      "Utiliser une mousse ou un agent émulseur pour isoler le combustible de l’air"
-    ]
-  },
-  {
-    "question": "Quelle description correspond à un feu de classe C ?",
-    "options": [
-      "Feu de gaz inflammables (butane, propane, gaz naturel, etc.)",
-      "Feu de métaux (magnésium, sodium, etc.)",
-      "Feu de liquides ou solides liquéfiables (essence, alcool, etc.)",
-      "Feu d’huiles et de graisses de cuisson (friture, etc.)",
-      "Feu de matériaux solides produisant des braises (bois, papier, etc.)",
-      "Aucune de ces réponses"
-    ],
-    "correctAnswers": [
-      "Feu de gaz inflammables (butane, propane, gaz naturel, etc.)"
-    ]
-  },
-  {
-    "question": "Quelle est l’action prioritaire pour éteindre un feu de classe C ?",
-    "options": [
-      "Refroidir la braise à l’eau",
-      "Employer un extincteur à poudre ou à CO₂ et surtout couper l’alimentation en gaz",
-      "Projeter de la mousse pour isoler l’huile de l’air",
-      "Appliquer du sable pour recouvrir le métal",
-      "Utiliser uniquement une couverture anti-feu",
-      "Aucune de ces réponses"
-    ],
-    "correctAnswers": [
-      "Employer un extincteur à poudre ou à CO₂ et surtout couper l’alimentation en gaz"
-    ]
-  },
-  {
-    "question": "Quelle description correspond à un feu de classe D ?",
-    "options": [
-      "Feu de gaz inflammables (butane, propane, gaz naturel, etc.)",
-      "Feu de liquides ou solides liquéfiables (essence, alcool, etc.)",
-      "Feu de métaux (magnésium, sodium, etc.)",
-      "Feu d’huiles et de graisses de cuisson (friture, etc.)",
-      "Feu de matériaux solides produisant des braises (bois, papier, etc.)",
-      "Aucune de ces réponses"
-    ],
-    "correctAnswers": [
-      "Feu de métaux (magnésium, sodium, etc.)"
-    ]
-  },
-  {
-    "question": "Quelle est la méthode conseillée pour éteindre un feu de classe D ?",
-    "options": [
-      "Refroidir à l’eau sous pression",
-      "Recourir à une mousse émulseur standard",
-      "Utiliser une poudre spéciale ou du sable sec pour étouffer le métal en combustion",
-      "Couper l’alimentation en gaz",
-      "Projeter de la vapeur d’eau à haute température",
-      "Aucune de ces réponses"
-    ],
-    "correctAnswers": [
-      "Utiliser une poudre spéciale ou du sable sec pour étouffer le métal en combustion"
-    ]
-  },
-  {
-    "question": "Quelle description correspond à un feu de classe F ?",
-    "options": [
-      "Feu de matériaux solides produisant des braises (bois, papier, etc.)",
-      "Feu de liquides ou solides liquéfiables (essence, alcool, etc.)",
-      "Feu de métaux (magnésium, sodium, etc.)",
-      "Feu de gaz inflammables (butane, propane, gaz naturel, etc.)",
-      "Feu d’huiles et de graisses de cuisson (friture, etc.)",
-      "Aucune de ces réponses"
-    ],
-    "correctAnswers": [
-      "Feu d’huiles et de graisses de cuisson (friture, etc.)"
-    ]
-  },
-  {
-    "question": "Quelle recommandation s’applique à l’extinction d’un feu de classe F ?",
-    "options": [
-      "Utiliser un extincteur à poudre pour métaux",
-      "Recouvrir la friteuse d’une couverture anti-feu ou utiliser un agent spécifique pour huiles de cuisson",
-      "Arroser abondamment à l’eau froide",
-      "Couper l’alimentation en gaz",
-      "Projeter de la mousse ordinaire comme pour un feu de carburant",
-      "Aucune de ces réponses"
-    ],
-    "correctAnswers": [
-      "Recouvrir la friteuse d’une couverture anti-feu ou utiliser un agent spécifique pour huiles de cuisson"
-    ]
-  },
-  {
-    "question": "Parmi les causes d’incendie souvent attribuées à l’action humaine (accident, négligence, malveillance, etc.), laquelle de cette liste n’est pas considérée comme d’origine humaine ?",
-    "options": [
-      "Accident",
-      "Négligence",
-      "Malveillance",
-      "Friction mécanique",
-      "Surtension",
-      "La foudre"
-    ],
-    "correctAnswers": [
-      "La foudre"
-    ]
-  },
-  {
-    "question": "Parmi les causes naturelles d’incendie, laquelle figure couramment dans la liste suivante ?",
-    "options": [
-      "Malveillance",
-      "Négligence",
-      "La foudre",
-      "Surtension",
-      "Friction mécanique",
-      "Aucune des réponses"
-    ],
-    "correctAnswers": [
-      "La foudre"
-    ]
-  },
-  {
-    "question": "Selon certaines statistiques, environ 85 % des décès lors d’un incendie sont dus à l’inhalation de fumée. Laquelle de ces propositions reflète le mieux cette donnée ?",
-    "options": [
-      "85 %",
-      "10 %",
-      "50 %",
-      "100 %",
-      "20 %",
-      "Aucune des réponses"
-    ],
-    "correctAnswers": [
-      "85 %"
-    ]
-  },
-  {
-    "question": "Le monoxyde de carbone (CO) est souvent cité comme gaz toxique émis par la fumée lors d’un incendie. Parmi ces gaz, lequel est le principal responsable d’asphyxie dans ces situations ?",
-    "options": [
-      "Monoxyde de carbone (CO)",
-      "Hélium (He)",
-      "Ozone (O3)",
-      "Azote (N2)",
-      "Hydrogène (H2)",
-      "Aucune des réponses"
-    ],
-    "correctAnswers": [
-      "Monoxyde de carbone (CO)"
-    ]
-  },
-  {
-    "question": "En plus de la toxicité, quel autre problème majeur la fumée cause-t-elle fréquemment pendant un incendie ?",
-    "options": [
-      "Une visibilité réduite",
-      "Une augmentation de la luminosité",
-      "Une baisse d’humidité",
-      "Une forte odeur de menthe",
-      "Un refroidissement de l’atmosphère",
-      "Aucune des réponses"
-    ],
-    "correctAnswers": [
-      "Une visibilité réduite"
-    ]
-  },
-  {
-    "question": "Parmi les dangers suivants liés à la fumée lors d’un incendie, lequel n’est généralement pas mentionné ?",
-    "options": [
-      "Irritation des voies respiratoires",
-      "Intoxication au monoxyde de carbone",
-      "Production d’acide cyanhydrique (HCN)",
-      "Explosion spontanée de la fumée",
-      "Asphyxie",
-      "Aucune des réponses"
-    ],
-    "correctAnswers": [
-      "Explosion spontanée de la fumée"
-    ]
-  },
-  {
-    "question": "Lors d’un incendie, le feu peut se propager de différentes manières. Quel mode de propagation correspond à un transfert de chaleur par contact direct à travers des matériaux conducteurs ?",
+    "question": "Comment se nomme le mode de transfert de chaleur qui s'effectue par contact direct entre deux surfaces ?",
     "options": [
       "Conduction",
       "Convection",
-      "Rayonnement",
-      "Combustion lente",
-      "Ébullition",
+      "Rayonnement thermique",
+      "Évaporation",
+      "Diffusion thermique",
       "Aucune des réponses"
     ],
     "correctAnswers": [
@@ -1065,13 +599,13 @@
     ]
   },
   {
-    "question": "Quel mode de propagation du feu implique un mouvement de gaz ou d’air chaud qui transporte la chaleur et les particules enflammées ?",
+    "question": "Quel est le phénomène par lequel l'air chaud s'élève et l'air froid descend, favorisant ainsi la circulation de la chaleur ?",
     "options": [
       "Conduction",
       "Convection",
-      "Rayonnement",
-      "Évaporation",
-      "Refroidissement",
+      "Rayonnement thermique",
+      "Sublimation",
+      "Diffusion",
       "Aucune des réponses"
     ],
     "correctAnswers": [
@@ -1079,32 +613,117 @@
     ]
   },
   {
-    "question": "Le transfert de chaleur sous forme d’ondes (infrarouges, par exemple) décrit quel mode de propagation du feu ?",
+    "question": "Comment appelle-t-on le transfert de chaleur réalisé par des ondes électromagnétiques, comme les infrarouges, sans contact direct entre les surfaces ?",
     "options": [
       "Conduction",
       "Convection",
-      "Rayonnement",
-      "Oxydation",
+      "Rayonnement thermique",
       "Transpiration",
+      "Combustion",
       "Aucune des réponses"
     ],
     "correctAnswers": [
-      "Rayonnement"
+      "Rayonnement thermique"
     ]
   },
   {
-    "question": "Laquelle de ces affirmations est fausse ou ne correspond pas aux réalités d’un incendie ?",
+    "question": "Parmi les conséquences d'un incendie, laquelle de ces propositions n'est généralement pas constatée ?",
     "options": [
-      "La fumée blanche peut être très toxique.",
-      "La foudre est une cause naturelle d’incendie.",
-      "Le monoxyde de carbone peut entraîner une asphyxie rapide.",
-      "La propagation par convection dépend de l’air chaud ascendant.",
-      "Environ 85 % des décès en incendie sont liés à la fumée.",
+      "Destruction partielle ou totale des structures",
+      "Risques de blessures ou de décès",
+      "Pertes financières importantes",
+      "Perturbation des services d'urgence",
+      "Amélioration de la qualité de l'air",
       "Aucune des réponses"
     ],
     "correctAnswers": [
-      "Aucune des réponses"
+      "Amélioration de la qualité de l'air"
     ]
+  },
+  {
+    "question": "Lorsqu'un local est envahi par la fumée, quelle conduite est recommandée pour limiter l'inhalation de substances toxiques ?",
+    "options": [
+      "Rester debout et respirer normalement",
+      "Se déplacer en se baissant et en se couvrant la bouche",
+      "Ouvrir immédiatement toutes les fenêtres",
+      "Courir rapidement sans se protéger",
+      "Ignorer la fumée pour éviter la panique",
+      "Aucune des réponses"
+    ],
+    "correctAnswers": [
+      "Se déplacer en se baissant et en se couvrant la bouche"
+    ]
+  },
+  {
+    "question": "Si vous êtes coincé dans un local en feu et que vous ne pouvez pas évacuer, quelle mesure est préconisée pour limiter l'entrée de fumée ?",
+    "options": [
+      "Laisser la porte ouverte pour favoriser la ventilation",
+      "Ouvrir plusieurs fenêtres pour créer un courant d'air",
+      "Couper l'électricité, fermer la porte et calfeutrer les interstices",
+      "Utiliser un ventilateur pour extraire la fumée",
+      "Se déplacer vers le centre de la pièce",
+      "Aucune des réponses"
+    ],
+    "correctAnswers": [
+      "Couper l'électricité, fermer la porte et calfeutrer les interstices"
+    ]
+  },
+  {
+    "question": "Lors de l'appel aux services d'urgence pour signaler un incendie, quelle information doit être communiquée en priorité ?",
+    "options": [
+      "Le nombre exact d'extincteurs disponibles",
+      "L'adresse précise et la nature du sinistre",
+      "La liste des personnes présentes sur les lieux",
+      "Le type de matériaux en combustion",
+      "Les conditions météorologiques actuelles",
+      "Aucune des réponses"
+    ],
+    "correctAnswers": [
+      "L'adresse précise et la nature du sinistre"
+    ]
+  },
+  {
+    "question": "Parmi les actions à entreprendre en cas d'incendie, laquelle doit être réalisée en premier ?",
+    "options": [
+      "Tenter d'éteindre le feu seul avant d'appeler à l'aide",
+      "Attendre d'avoir des informations supplémentaires avant d'agir",
+      "Appeler immédiatement les secours (par exemple, le 18 ou le 112)",
+      "Ouvrir toutes les issues pour faciliter la ventilation",
+      "Se déplacer vers le centre du bâtiment pour trouver un abri",
+      "Aucune des réponses"
+    ],
+    "correctAnswers": [
+      "Appeler immédiatement les secours (par exemple, le 18 ou le 112)"
+    ]
+  },
+  {
+    "question": "Selon les principes du transfert de chaleur par conduction, laquelle des affirmations suivantes est FAUSSE ?",
+    "options": [
+      "La conduction nécessite un contact direct entre les matériaux.",
+      "La conduction est généralement plus efficace dans les métaux.",
+      "La conduction implique le transfert d'énergie par vibration des molécules.",
+      "La conduction se produit uniquement dans les liquides.",
+      "La conduction peut se produire dans tous les états de la matière.",
+      "Aucune des réponses"
+    ],
+    "correctAnswers": [
+      "La conduction se produit uniquement dans les liquides."
+    ]
+  },
+  {
+    "question": "Quel est l'effet principal de la fumée sur la visibilité lors d'un incendie ?",
+    "options": [
+      "Elle améliore la visibilité en éclaircissant l'atmosphère.",
+      "Elle ne modifie pas la visibilité.",
+      "Elle réduit considérablement la visibilité.",
+      "Elle rend la visibilité variable selon la température.",
+      "Elle permet de mieux distinguer les sources de chaleur.",
+      "Aucune des réponses"
+    ],
+    "correctAnswers": [
+      "Elle réduit considérablement la visibilité."
+    ]
+  
   }
 
 
