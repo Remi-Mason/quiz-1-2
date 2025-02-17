@@ -1,0 +1,1418 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Quiz Sécurité Incendie</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Couleur pour Android (Chrome) -->
+  <meta name="theme-color" content="#A9A9A9">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <!-- Préchargement de quelques images critiques -->
+  <link rel="preload" as="image" href="images/wall.png">
+  <link rel="preload" as="image" href="images/wall2.png">
+  <link rel="preload" as="image" href="images/correct.png">
+  <link rel="preload" as="image" href="images/incorrect.png">
+  <link rel="preload" as="image" href="images/decor1.gif">
+  <link rel="preload" as="image" href="images/decor2.gif">
+  <link rel="preload" as="image" href="images/fire empty.png">
+  <link rel="preload" as="image" href="images/fire full.png">
+  <link rel="preload" as="image" href="images/ryu.gif">
+  <link rel="preload" as="image" href="images/ken.gif">
+  <link rel="preload" as="image" href="images/ryu2.gif">
+  <link rel="preload" as="image" href="images/ken2.gif">
+  <link rel="preload" as="image" href="images/mute-off.gif">
+  <link rel="preload" as="image" href="images/mute-on.gif">
+  <link rel="preload" as="image" href="images/perfect.gif">
+  <link rel="preload" as="image" href="images/tryagain.png">
+  <link rel="preload" as="image" href="images/youwin.png">
+  <link rel="preload" as="image" href="images/lose1.gif">
+  <link rel="preload" as="image" href="images/lose2.gif">
+  
+  <style>
+    /* Animations et styles identiques à votre version initiale */
+    @keyframes shake {
+      0% { transform: translate(0, 0); }
+      10% { transform: translate(-10px, -10px); }
+      20% { transform: translate(10px, 10px); }
+      30% { transform: translate(-10px, 10px); }
+      40% { transform: translate(10px, -10px); }
+      50% { transform: translate(-10px, -10px); }
+      60% { transform: translate(10px, 10px); }
+      70% { transform: translate(-10px, 10px); }
+      80% { transform: translate(10px, -10px); }
+      90% { transform: translate(-10px, -10px); }
+      100% { transform: translate(0, 0); }
+    }
+    @keyframes popAnimation {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+      100% { transform: scale(1); }
+    }
+    @keyframes blink {
+      0% { opacity: 1; }
+      50% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+    @keyframes glow-green {
+      0% { box-shadow: 0 0 5px rgba(0,255,0,0.7); }
+      50% { box-shadow: 0 0 20px rgba(0,255,0,0.9); }
+      100% { box-shadow: 0 0 5px rgba(0,255,0,0.7); }
+    }
+    @keyframes borderGlow {
+      0%, 100% { box-shadow: 0 0 5px 2px #00e5ff; }
+      50% { box-shadow: 0 0 20px 2px #00e5ff; }
+    }
+    @keyframes borderGlow2 {
+      0%, 100% { box-shadow: 0 0 5px 2px rgba(255,0,0,0.7); }
+      50% { box-shadow: 0 0 20px 2px rgba(255,0,0,0.7); }
+    }
+    @keyframes borderGlowGreen {
+      0%, 100% { box-shadow: 0 0 5px 2px rgba(0,255,0,0.7); }
+      50% { box-shadow: 0 0 20px 2px rgba(0,255,0,0.7); }
+    }
+    @keyframes floatAnimation {
+      0%   { transform: translateY(0); }
+      25%  { transform: translateY(-3px); }
+      50%  { transform: translateY(0); }
+      75%  { transform: translateY(5px); }
+      100% { transform: translateY(0); }
+    }
+    .floating-title {
+      animation: floatAnimation 8s ease-in-out infinite;
+      display: block;
+      margin: 0 auto 20px;
+      max-width: 90%;
+    }
+    .pikachu {
+      border: 3px solid white;
+      display: block;
+      margin: 0 auto;
+      max-width: 100%;
+      margin-bottom: 20px;
+    }
+    #result-header {
+      display: block;
+      margin: 0 auto 20px;
+      margin-left: 20px;
+    }
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #2C2C2C, #555555, #888888, #BBBBBB);
+      background-size: 100% 100%;
+    }
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .container {
+      width: 360px;
+      max-width: 90%;
+      background: url('images/wall.png') no-repeat center center;
+      background-size: cover;
+      border: 3px solid white;
+      border-radius: 15px;
+      text-align: center;
+      padding: 30px;
+      margin: 20px auto;
+      transition: transform 0.3s ease;
+    }
+    #home { width: 360px; }
+    #start-btn {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 140px;
+      height: 80px;
+      margin: 20px auto;
+      padding: 5px 10px;
+      font-size: 18px;
+      cursor: pointer;
+      background: linear-gradient(to top, black, gray);
+      color: white;
+      font-weight: bold;
+      border: 2px solid white;
+      border-radius: 10px;
+      text-shadow: 1px 1px 2px black;
+      transition: transform 0.1s ease-in-out;
+      animation: borderGlow 2s ease-in-out infinite;
+      position: relative;
+      overflow: visible;
+    }
+    #start-btn:active {
+      transform: scale(0.95);
+      animation: glow-green 1.5s infinite ease-in-out, blink 0.3s infinite ease-in-out;
+    }
+    #start-btn img {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 140px;
+      height: auto;
+      pointer-events: none;
+    }
+    #quiz-container {
+      background: linear-gradient(135deg, #2c2c2c, #808080);
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      text-align: center;
+      display: none;
+    }
+    #question-counter {
+      font-weight: bold;
+      font-family: Arial, sans-serif;
+      color: white;
+      margin-top: -20px;
+      margin-bottom: 0px;
+    }
+    #question-text {
+      width: 95%;
+      margin: 0 auto;
+      font-family: 'Arial Black', Arial, sans-serif;
+      font-weight: bold;
+      font-size: 22px;
+      margin-bottom: 10px;
+      color: white;
+      text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000, 3px 3px 5px black;
+      line-height: 1.5;
+    }
+    .options {
+      font-family: Arial, sans-serif;
+      font-size: 18px;
+      color: white;
+      text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000, 3px 3px 5px black;
+      text-align: left;
+      margin: 0 0 30px 20px;
+      padding-left: 20px;
+    }
+    .option {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      margin-bottom: 10px;
+    }
+    .option input[type="checkbox"] { display: none; }
+    .option label { display: inline-flex; align-items: center; }
+    .option label:before {
+      content: "";
+      display: inline-block;
+      width: 60px;
+      height: 60px;
+      margin-right: 8px;
+      margin-left: -60px;
+      background: url('images/fire empty.png') no-repeat center;
+      background-size: contain;
+      flex-shrink: 0;
+    }
+    .option input[type="checkbox"]:checked + label:before {
+      background: url('images/fire full.png') no-repeat center;
+      background-size: contain;
+      width: 60px;
+      height: 60px;
+    }
+    #validate-btn, #next-btn {
+      font-weight: bold;
+      margin: 0 auto;
+      margin-top: 30px;
+      display: block;
+      padding: 15px 25px;
+      font-size: 25px;
+      border: 3px solid white;
+      border-radius: 10px;
+      background-color: #1a1d21;
+      color: white;
+      cursor: pointer;
+      transition: transform 0.1s ease, box-shadow 0.1s ease;
+      animation: borderGlow 2s ease-in-out infinite;
+    }
+    #validate-btn:active, #next-btn:active { transform: translateY(2px) scale(0.98); }
+    #result { margin-top: 20px; }
+    .result-image {
+      width: 60px;
+      display: block;
+      margin: 10px auto;
+    }
+    .incorrect-answer-text {
+      color: red;
+      font-size: 20px;
+      font-weight: bold;
+      font-family: 'Arial Black', Arial, sans-serif;
+      text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff, 3px 3px 5px black;
+        margin-bottom: 10px;
+  margin-top: 0px;
+    }
+    .incorrect-answer-header {
+      margin-top: -40px;
+      font-weight: bold;
+      font-size: 18px;
+      font-family: 'Arial Black', Arial, sans-serif;
+      text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000, 3px 3px 5px black;
+      color: white;
+    }
+    /* Nouveau conteneur pour décaler le bloc réponse quand le bouton "Suivant" apparaît */
+    .incorrect-answer-wrapper {
+      margin-top: 20px;
+    }
+    .correct-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .correct-decoration { width: 60px; }
+    .correct-container .result-image.correct {
+      animation: popAnimation 0.5s ease-out;
+      width: 80px;
+      margin-top: -40px;
+      z-index: 1;
+    }
+    .result-image.incorrect {
+      width: 80px;
+      margin-top: -60px;
+      animation: shake 0.5s ease-in-out;
+    }
+    #result-page { display: none; }
+    #result-page h2 { font-size: 24px; margin-bottom: 20px; }
+    #final-score {
+      margin-top: -10px;
+      margin-bottom: 0px;
+      font-weight: bold;
+      font-size: 25px;
+      font-family: 'Arial Black', Arial, sans-serif;
+      text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000, 3px 3px 5px black;
+      color: #00ff1a;
+    }
+    #restart-btn {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 160px;
+      height: 65px;
+      margin: 20px auto;
+      padding: 5px 20px;
+      font-size: 18px;
+      cursor: pointer;
+      background: linear-gradient(to top, black, gray);
+      color: white;
+      font-weight: bold;
+      border: 2px solid white;
+      border-radius: 10px;
+      text-shadow: 1px 1px 2px black;
+      transition: transform 0.1s ease-in-out;
+      position: relative;
+      overflow: visible;
+      animation: borderGlow2 2s ease-in-out infinite;
+    }
+    #restart-btn:active { transform: scale(0.95); }
+    @media (max-width: 480px) {
+      .container { width: 90%; padding: 15px; padding-top: 20px; }
+      #question-text { font-size: 18px; }
+      #final-score { font-size: 20px; }
+      .floating-title { margin: 0 auto 10px; }
+      .pikachu { margin: 0 auto; }
+    }
+    .startu { border-radius: 10px; }
+    .decor-right {
+      width: 80px;
+      transform: translate(-32px, -20px);
+      z-index: 0;
+      padding: 12px 0px;
+    }
+    .decor-left {
+      width: 80px;
+      transform: translate(30px, -20px);
+      z-index: 0;
+      padding: 12px 0px;
+    }
+    .incorrect-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .decor-rightX {
+      width: 80px;
+      transform: translate(-40px, -40px);
+      z-index: 0;
+      padding: 12px 0px;
+    }
+    .decor-leftX {
+      width: 80px;
+      transform: translate(40px, -40px);
+      z-index: 0;
+      padding: 12px 0px;
+    }
+    .again {
+      display: block;
+      margin: 0 auto;
+    }
+    @keyframes windmillShake {
+      0% { transform: rotate(0deg); }
+      15% { transform: rotate(15deg); }
+      30% { transform: rotate(-15deg); }
+      45% { transform: rotate(10deg); }
+      60% { transform: rotate(-10deg); }
+      75% { transform: rotate(5deg); }
+      90% { transform: rotate(-5deg); }
+      100% { transform: rotate(0deg); }
+    }
+    .windmill-shake {
+      animation: windmillShake 0.8s ease-in-out forwards;
+      transform-origin: center;
+    }
+    .raised {
+      transform: translateY(-20px);
+      margin-bottom: -10px !important;
+    }
+    @keyframes victoryAnimation {
+      0% { transform: scale(1) rotate(0deg); }
+      20% { transform: scale(1.1) rotate(3deg); }
+      40% { transform: scale(1) rotate(-3deg); }
+      60% { transform: scale(1.1) rotate(3deg); }
+      80% { transform: scale(1) rotate(-3deg); }
+      90% { transform: scale(1) rotate(0deg); }
+      100% { transform: scale(1) rotate(0deg); }
+    }
+    .victory-animation {
+      animation: victoryAnimation 2s ease-in-out infinite;
+      transform-origin: center;
+    }
+    @media (max-width: 480px) {
+      .pikachu {
+        width: 85%;
+        margin: 0 auto;
+        transform: translateX(0px);
+      }
+    }
+    @media (max-width: 480px) {
+      .again {
+        width: 85%;
+        margin: 0 auto;
+        transform: translateX(0px);
+      }
+    }
+    @media (max-width: 480px) {
+      #result-header {
+        display: block;
+        margin: 0 auto 20px;
+        width: 85%;
+      }
+    }
+    @media (max-width: 480px) {
+      .decor-right {
+        width: 80px;
+        transform: translate(-12px, -20px);
+        z-index: 0;
+        padding: 12px 0px;
+      }
+    }
+    @media (max-width: 480px) {
+      .decor-left {
+        width: 80px;
+        transform: translate(10px, -20px);
+        z-index: 0;
+        padding: 12px 0px;
+      }
+    }
+    @media (max-width: 480px) {
+      .decor-rightX {
+        width: 80px;
+        transform: translate(-10px, -40px);
+        z-index: 0;
+        padding: 12px 0px;
+      }
+    }
+    @media (max-width: 480px) {
+      .decor-leftX {
+        width: 80px;
+        transform: translate(10px, -40px);
+        z-index: 0;
+        padding: 12px 0px;
+      }
+    }
+    @media (max-width: 480px) {
+      #question-text { font-size: 22px; }
+    }
+    @media (max-width: 480px) {
+      #mute-btn {
+        margin-top: 30px!important;
+      }
+    }
+    @media (max-width: 480px) {
+      #final-score {
+        font-size: 28px !important;
+      }
+    }
+    /* Fin ajout règle */
+    #next-btn {
+      position: relative;
+      top: -30px;
+      color: #00e5ff;
+    }
+        @media (max-width: 480px) {
+     .incorrect-answer-text {
+      color: red;
+      font-size: 20px;
+      font-weight: bold;
+      font-family: 'Arial Black', Arial, sans-serif;
+      text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff, 3px 3px 5px black;
+      margin: 5px 0 10px;
+    }
+    
+    /* Styles pour le modal de l'index */
+#index-modal {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.5); /* Fond noir avec 50% d'opacité */
+  padding: 20px;
+  border-radius: 15px;
+  z-index: 1000;
+  text-align: center;
+  width: 300px;      /* Largeur définie pour ne pas prendre toute la largeur */
+  max-width: 80%;    /* Adaptatif sur mobile */
+}
+
+/* Boutons INDEX agrandis à l'intérieur du modal */
+#index-modal .index-option {
+  width: 60px;                  /* Bouton plus grand */
+  height: 60px;
+  margin: 0 10px;
+  font-size: 18px;              /* Texte agrandi */
+  border: 2px solid white;
+  border-radius: 50%;
+  background: linear-gradient(to top, black, gray);
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.1s ease-in-out;
+}
+
+#index-modal .index-option:active {
+  transform: scale(0.95);
+}
+
+/* Optionnel : ajuster le bouton de fermeture */
+#index-modal #close-index-modal {
+  margin-top: 20px;
+  padding: 8px 16px;
+  font-size: 16px;
+  border: 2px solid white;
+  border-radius: 5px;
+  background: linear-gradient(to top, black, gray);
+  color: white;
+  cursor: pointer;
+  transition: transform 0.1s ease-in-out;
+}
+#index-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 160px;               /* Taille adaptée */
+  height: 65px;               /* Taille adaptée */
+  margin: 20px auto;
+  padding: 5px 20px;
+  font-size: 18px;
+  cursor: pointer;
+  background: linear-gradient(to top, black, gray);
+  color: white;
+  font-weight: bold;
+  border: 2px solid white;
+  border-radius: 10px;
+  text-shadow: 1px 1px 2px black;
+  transition: transform 0.1s ease-in-out;
+  animation: borderGlow 2s ease-in-out infinite;  /* Border glow bleu */
+}
+
+#index-btn:active {
+  transform: scale(0.95);  /* Effet push-button */
+}
+  </style>
+</head>
+<body>
+  <!-- Éléments audio -->
+  <audio id="checkbox-sound" src="audio/select.mp3" preload="auto"></audio>
+  <audio id="start-sound" src="audio/start.mp3" preload="auto"></audio>
+  <audio id="correct-sound" src="audio/correct.mp3" preload="auto"></audio>
+  <audio id="incorrect-sound" src="audio/incorrect.mp3" preload="auto"></audio>
+  <audio id="incorrect-sound2" src="audio/incorrect2.mp3" preload="auto"></audio>
+  <audio id="perfect-sound" src="audio/perfect.mp3" preload="auto"></audio>
+  <audio id="imperfect-sound" src="audio/imperfect.mp3" preload="auto"></audio>
+  
+  <!-- Page d'accueil -->
+  <div class="container" id="home">
+    <img src="images/titre.png" alt="quiz ssiap1" class="floating-title">
+    <img src="" alt="pik" class="pikachu" style="visibility: hidden;">
+    <img id="mute-btn" src="images/mute-off.gif" alt="Son activé" style="cursor: pointer; width: 30px; height: 25px; margin-bottom: 10px; margin-top: 10px">
+    <button id="start-btn"><img src="images/start.png" style="margin-left: 5px;"></button>
+    <button id="home-index-btn" class="index-btn">INDEX</button>
+  </div>
+  
+  <!-- Zone du quiz -->
+  <div class="container" id="quiz-container">
+    <div id="question-counter"> 1 / <span id="total-questions"></span></div>
+    <div id="question-text">[Texte de la question]</div>
+    <div class="options" id="options">
+      <!-- Les options seront générées dynamiquement -->
+    </div>
+    <button id="validate-btn">Valider</button>
+    <div id="result"></div>
+  </div>
+  
+  <!-- Page de résultats finale -->
+  <div class="container" id="result-page">
+    <img id="result-header" src="images/tryagain.png" alt="encore" class="again">
+    <img id="final-image" src="images/lose1.gif" alt="Résultat" style="width:120px; display:block; margin: -15px auto 20px;">
+    <p id="final-score">Score : 0 sur <span id="total-questions-result"></span></p>
+    <button id="restart-btn" style="text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000, 3px 3px 5px black;">RECOMMENCER</button>
+    <button id="index-btn" style="text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000, 3px 3px 5px black;">INDEX</button>
+  </div>
+  
+  <!-- Container modal pour l'index -->
+<div id="index-modal" style="display: none;">
+  <button class="index-option" data-url="page1.html">1</button>
+  <button class="index-option" data-url="page2.html">2</button>
+  <button class="index-option" data-url="page3.html">3</button>
+  <br>
+  <button id="close-index-modal">Fermer</button>
+</div>
+  
+  <script>
+    // Données du quiz générées à partir du questionnaire
+    const quizData = [
+  {
+    "question": "Quelle est la proportion d’oxygène dans l’air ?",
+    "options": [
+      "78 %",
+      "21 %",
+      "14 %",
+      "1 %",
+      "25 %",
+      "Aucune des réponses"
+    ],
+    "correctAnswers": [
+      "21 %"
+    ]
+  },
+  {
+    "question": "Quelle est la proportion d’azote dans l’air ?",
+    "options": [
+      "21 %",
+      "14 %",
+      "78 %",
+      "25 %",
+      "1 %",
+      "Aucune des réponses"
+    ],
+    "correctAnswers": [
+      "78 %"
+    ]
+  },
+  {
+    "question": "Quelle est la teneur minimale en oxygène permettant la combustion ?",
+    "options": [
+      "14 %",
+      "1 %",
+      "21 %",
+      "78 %",
+      "25 %",
+      "Aucune des réponses"
+    ],
+    "correctAnswers": [
+      "14 %"
+    ]
+  },
+  {
+    "question": "Quelle est la proportion de gaz rares dans l’air ?",
+    "options": [
+      "78 %",
+      "14 %",
+      "21 %",
+      "1 %",
+      "25 %",
+      "Aucune des réponses"
+    ],
+    "correctAnswers": [
+      "1 %"
+    ]
+  },
+  {
+    "question": "Quels sont les trois éléments du « triangle du feu » ?",
+    "options": [
+      "Combustible",
+      "Comburant (oxygène)",
+      "Azote",
+      "Énergie d’activation (chaleur)",
+      "Gaz rares",
+      "Aucune des réponses"
+    ],
+    "correctAnswers": [
+      "Combustible",
+      "Comburant (oxygène)",
+      "Énergie d’activation (chaleur)"
+    ]
+  },
+  {
+    "question": "Comment définit-on le feu ?",
+    "options": [
+      "Une réaction d’oxydation qui dégage chaleur et lumière",
+      "Un phénomène exclusivement dû à la foudre",
+      "Un simple mouvement d’air chaud",
+      "Une réaction chimique qui ne dégage aucune chaleur",
+      "Une réaction de fusion entre gaz rares",
+      "Aucune des réponses"
+    ],
+    "correctAnswers": [
+      "Une réaction d’oxydation qui dégage chaleur et lumière"
+    ]
+  },
+  {
+    "question": "Quelle est la plage de température de la flamme ?",
+    "options": [
+      "De 14 °C à 25 °C",
+      "De 300 °C à 500 °C",
+      "De 100 °C à 200 °C",
+      "De 2500 °C à 3000 °C",
+      "De 800 °C à 1200 °C",
+      "Aucune des réponses"
+    ],
+    "correctAnswers": [
+      "De 800 °C à 1200 °C"
+    ]
+  },
+  {
+    "question": "Le « point éclair » est :",
+    "options": [
+      "La température à partir de laquelle le combustible s’enflamme en présence d’une source d’ignition",
+      "La température à laquelle le combustible brûle spontanément sans source d’ignition",
+      "Toujours égale à 800 °C",
+      "Forcément inférieure à 14 %",
+      "Synonyme de point d’inflammation",
+      "Aucune des réponses"
+    ],
+    "correctAnswers": [
+      "La température à partir de laquelle le combustible s’enflamme en présence d’une source d’ignition"
+    ]
+  },
+  {
+    "question": "Le « point d’inflammation » (ou point de flamme) est :",
+    "options": [
+      "Toujours plus bas que le point éclair",
+      "La température à laquelle le combustible continue de brûler même sans source d’ignition",
+      "Égale à 1 %",
+      "Toujours inférieur à 100 °C",
+      "Une température qui ne peut pas dépasser 300 °C",
+      "Aucune des réponses"
+    ],
+    "correctAnswers": [
+      "La température à laquelle le combustible continue de brûler même sans source d’ignition"
+    ]
+  },
+  {
+    "question": "Qu’arrive-t-il si l’un des éléments du triangle du feu manque ?",
+    "options": [
+      "Le feu ne peut pas démarrer ou s’arrête",
+      "La température de la flamme augmente",
+      "Le feu se propage plus rapidement",
+      "L’azote remplace l’oxygène",
+      "Les gaz rares prennent le relais",
+      "Aucune des réponses"
+    ],
+    "correctAnswers": [
+      "Le feu ne peut pas démarrer ou s’arrête"
+    ]
+  },
+  {
+    "question": "Pourquoi la flamme se développe-t-elle dans le temps et l’espace ?",
+    "options": [
+      "Les fumées chaudes montent, laissant l’air frais arriver",
+      "La chaleur favorise la pyrolyse de nouvelles zones",
+      "L’azote se transforme en oxygène",
+      "Les gaz rares créent un effet de surpression",
+      "Le point éclair devient nul",
+      "Aucune des réponses"
+    ],
+    "correctAnswers": [
+      "Les fumées chaudes montent, laissant l’air frais arriver",
+      "La chaleur favorise la pyrolyse de nouvelles zones"
+    ]
+  },
+  {
+    "question": "Parmi les caractéristiques d’un combustible, laquelle (ou lesquelles) est (sont) exacte(s) ?",
+    "options": [
+      "Il doit dégager des vapeurs inflammables à une certaine température",
+      "Il ne peut jamais se vaporiser",
+      "Il présente un point éclair et un point d’inflammation",
+      "Il ne peut se consumer qu’à moins de 14 % d’oxygène",
+      "Il est ininflammable en dessous de 800 °C",
+      "Aucune des réponses"
+    ],
+    "correctAnswers": [
+      "Il doit dégager des vapeurs inflammables à une certaine température",
+      "Il présente un point éclair et un point d’inflammation"
+    ]
+  },
+  {
+    "question": "Quel est le rôle de l'azote dans la combustion ?",
+    "options": [
+      "Il alimente la combustion",
+      "Il favorise l'oxydation",
+      "Il participe au triangle du feu",
+      "Il améliore la température de la flamme",
+      "Il accélère la réaction de pyrolyse",
+      "Aucune des réponses"
+    ],
+    "correctAnswers": [
+      "Aucune des réponses"
+   ]
+  }, 
+  {
+    "question": "Parmi les combustibles suivants, lequel possède le point d’auto-inflammation le plus élevé (en °C) ?",
+    "options": [
+      "Essence (280 °C)",
+      "Gazole (220 °C)",
+      "Kérosène (210 °C)",
+      "Acétone (540 °C)",
+      "Fioul (250 °C)",
+      "Aucune de ces réponses"
+    ],
+    "correctAnswers": [
+      "Acétone (540 °C)"
+    ]
+  },
+  {
+    "question": "Le pouvoir calorifique d’un combustible, exprimé en kJ/kg, correspond à :",
+    "options": [
+      "La température minimale d’auto-inflammation",
+      "La quantité de chaleur dégagée par la combustion d’une unité de masse",
+      "La quantité de gaz libérée par la combustion",
+      "La température d’ébullition du combustible",
+      "Le volume d’oxygène requis pour la combustion",
+      "Aucune de ces réponses"
+    ],
+    "correctAnswers": [
+      "La quantité de chaleur dégagée par la combustion d’une unité de masse"
+    ]
+  },
+  {
+    "question": "Le potentiel calorifique d’un combustible est :",
+    "options": [
+      "La somme du pouvoir calorifique et du point d’éclair",
+      "La capacité du combustible à s’enflammer sous pression uniquement",
+      "L’énergie totale susceptible d’être libérée lors de la combustion complète d’une certaine quantité",
+      "La vitesse de propagation de la flamme dans le matériau",
+      "La température de la flamme en conditions idéales",
+      "Aucune de ces réponses"
+    ],
+    "correctAnswers": [
+      "L’énergie totale susceptible d’être libérée lors de la combustion complète d’une certaine quantité"
+    ]
+  },
+  {
+    "question": "Au sujet de la combustion des gaz, quelle affirmation est correcte ?",
+    "options": [
+      "Elle ne nécessite pas d’oxygène",
+      "Elle survient toujours en dessous de 0 °C",
+      "Elle produit systématiquement un résidu solide",
+      "Elle peut être très rapide et dépend de la pression et du mélange air/gaz",
+      "Elle n’émet jamais de chaleur",
+      "Aucune de ces réponses"
+    ],
+    "correctAnswers": [
+      "Elle peut être très rapide et dépend de la pression et du mélange air/gaz"
+    ]
+  },
+  {
+    "question": "Quelle description correspond à un feu de classe A ?",
+    "options": [
+      "Feu de gaz inflammables (butane, propane, gaz naturel, etc.)",
+      "Feu de liquides ou solides liquéfiables (essence, alcool, etc.)",
+      "Feu de métaux (magnésium, sodium, etc.)",
+      "Feu d’huiles et de graisses de cuisson (friture, etc.)",
+      "Feu de matériaux solides produisant des braises (bois, papier, etc.)",
+      "Aucune de ces réponses"
+    ],
+    "correctAnswers": [
+      "Feu de matériaux solides produisant des braises (bois, papier, etc.)"
+    ]
+  },
+  {
+    "question": "Quelle méthode d’extinction est généralement adaptée à un feu de classe A ?",
+    "options": [
+      "Étouffement au CO₂ uniquement",
+      "Refroidissement à l’eau pour abaisser la température et arrêter la pyrolyse",
+      "Projection de sable pour neutraliser le métal en fusion",
+      "Extinction par mousse spécialement conçue pour les huiles de cuisson",
+      "Coupe de l’alimentation en gaz",
+      "Aucune de ces réponses"
+    ],
+    "correctAnswers": [
+      "Refroidissement à l’eau pour abaisser la température et arrêter la pyrolyse"
+    ]
+  },
+  {
+    "question": "Quelle description correspond à un feu de classe B ?",
+    "options": [
+      "Feu de matériaux solides produisant des braises (bois, papier, etc.)",
+      "Feu de gaz inflammables (butane, propane, gaz naturel, etc.)",
+      "Feu de liquides ou solides liquéfiables (essence, alcool, etc.)",
+      "Feu de métaux (magnésium, sodium, etc.)",
+      "Feu d’huiles et de graisses de cuisson (friture, etc.)",
+      "Aucune de ces réponses"
+    ],
+    "correctAnswers": [
+      "Feu de liquides ou solides liquéfiables (essence, alcool, etc.)"
+    ]
+  },
+  {
+    "question": "Quelle précaution est recommandée pour éteindre un feu de classe B ?",
+    "options": [
+      "Utiliser un extincteur à poudre pour métaux",
+      "Employer une couverture anti-feu pour étouffer des braises",
+      "Projeter de l’eau abondamment",
+      "Utiliser une mousse ou un agent émulseur pour isoler le combustible de l’air",
+      "Couper l’alimentation électrique",
+      "Aucune de ces réponses"
+    ],
+    "correctAnswers": [
+      "Utiliser une mousse ou un agent émulseur pour isoler le combustible de l’air"
+    ]
+  },
+  {
+    "question": "Quelle description correspond à un feu de classe C ?",
+    "options": [
+      "Feu de gaz inflammables (butane, propane, gaz naturel, etc.)",
+      "Feu de métaux (magnésium, sodium, etc.)",
+      "Feu de liquides ou solides liquéfiables (essence, alcool, etc.)",
+      "Feu d’huiles et de graisses de cuisson (friture, etc.)",
+      "Feu de matériaux solides produisant des braises (bois, papier, etc.)",
+      "Aucune de ces réponses"
+    ],
+    "correctAnswers": [
+      "Feu de gaz inflammables (butane, propane, gaz naturel, etc.)"
+    ]
+  },
+  {
+    "question": "Quelle est l’action prioritaire pour éteindre un feu de classe C ?",
+    "options": [
+      "Refroidir la braise à l’eau",
+      "Employer un extincteur à poudre ou à CO₂ et surtout couper l’alimentation en gaz",
+      "Projeter de la mousse pour isoler l’huile de l’air",
+      "Appliquer du sable pour recouvrir le métal",
+      "Utiliser uniquement une couverture anti-feu",
+      "Aucune de ces réponses"
+    ],
+    "correctAnswers": [
+      "Employer un extincteur à poudre ou à CO₂ et surtout couper l’alimentation en gaz"
+    ]
+  },
+  {
+    "question": "Quelle description correspond à un feu de classe D ?",
+    "options": [
+      "Feu de gaz inflammables (butane, propane, gaz naturel, etc.)",
+      "Feu de liquides ou solides liquéfiables (essence, alcool, etc.)",
+      "Feu de métaux (magnésium, sodium, etc.)",
+      "Feu d’huiles et de graisses de cuisson (friture, etc.)",
+      "Feu de matériaux solides produisant des braises (bois, papier, etc.)",
+      "Aucune de ces réponses"
+    ],
+    "correctAnswers": [
+      "Feu de métaux (magnésium, sodium, etc.)"
+    ]
+  },
+  {
+    "question": "Quelle est la méthode conseillée pour éteindre un feu de classe D ?",
+    "options": [
+      "Refroidir à l’eau sous pression",
+      "Recourir à une mousse émulseur standard",
+      "Utiliser une poudre spéciale ou du sable sec pour étouffer le métal en combustion",
+      "Couper l’alimentation en gaz",
+      "Projeter de la vapeur d’eau à haute température",
+      "Aucune de ces réponses"
+    ],
+    "correctAnswers": [
+      "Utiliser une poudre spéciale ou du sable sec pour étouffer le métal en combustion"
+    ]
+  },
+  {
+    "question": "Quelle description correspond à un feu de classe F ?",
+    "options": [
+      "Feu de matériaux solides produisant des braises (bois, papier, etc.)",
+      "Feu de liquides ou solides liquéfiables (essence, alcool, etc.)",
+      "Feu de métaux (magnésium, sodium, etc.)",
+      "Feu de gaz inflammables (butane, propane, gaz naturel, etc.)",
+      "Feu d’huiles et de graisses de cuisson (friture, etc.)",
+      "Aucune de ces réponses"
+    ],
+    "correctAnswers": [
+      "Feu d’huiles et de graisses de cuisson (friture, etc.)"
+    ]
+  },
+  {
+    "question": "Quelle recommandation s’applique à l’extinction d’un feu de classe F ?",
+    "options": [
+      "Utiliser un extincteur à poudre pour métaux",
+      "Recouvrir la friteuse d’une couverture anti-feu ou utiliser un agent spécifique pour huiles de cuisson",
+      "Arroser abondamment à l’eau froide",
+      "Couper l’alimentation en gaz",
+      "Projeter de la mousse ordinaire comme pour un feu de carburant",
+      "Aucune de ces réponses"
+    ],
+    "correctAnswers": [
+      "Recouvrir la friteuse d’une couverture anti-feu ou utiliser un agent spécifique pour huiles de cuisson"
+    ]
+  },
+  {
+    "question": "Parmi les causes d’incendie souvent attribuées à l’action humaine (accident, négligence, malveillance, etc.), laquelle de cette liste n’est pas considérée comme d’origine humaine ?",
+    "options": [
+      "Accident",
+      "Négligence",
+      "Malveillance",
+      "Friction mécanique",
+      "Surtension",
+      "La foudre"
+    ],
+    "correctAnswers": [
+      "La foudre"
+    ]
+  },
+  {
+    "question": "Parmi les causes naturelles d’incendie, laquelle figure couramment dans la liste suivante ?",
+    "options": [
+      "Malveillance",
+      "Négligence",
+      "La foudre",
+      "Surtension",
+      "Friction mécanique",
+      "Aucune des réponses"
+    ],
+    "correctAnswers": [
+      "La foudre"
+    ]
+  },
+  {
+    "question": "Selon certaines statistiques, environ 85 % des décès lors d’un incendie sont dus à l’inhalation de fumée. Laquelle de ces propositions reflète le mieux cette donnée ?",
+    "options": [
+      "85 %",
+      "10 %",
+      "50 %",
+      "100 %",
+      "20 %",
+      "Aucune des réponses"
+    ],
+    "correctAnswers": [
+      "85 %"
+    ]
+  },
+  {
+    "question": "Le monoxyde de carbone (CO) est souvent cité comme gaz toxique émis par la fumée lors d’un incendie. Parmi ces gaz, lequel est le principal responsable d’asphyxie dans ces situations ?",
+    "options": [
+      "Monoxyde de carbone (CO)",
+      "Hélium (He)",
+      "Ozone (O3)",
+      "Azote (N2)",
+      "Hydrogène (H2)",
+      "Aucune des réponses"
+    ],
+    "correctAnswers": [
+      "Monoxyde de carbone (CO)"
+    ]
+  },
+  {
+    "question": "En plus de la toxicité, quel autre problème majeur la fumée cause-t-elle fréquemment pendant un incendie ?",
+    "options": [
+      "Une visibilité réduite",
+      "Une augmentation de la luminosité",
+      "Une baisse d’humidité",
+      "Une forte odeur de menthe",
+      "Un refroidissement de l’atmosphère",
+      "Aucune des réponses"
+    ],
+    "correctAnswers": [
+      "Une visibilité réduite"
+    ]
+  },
+  {
+    "question": "Parmi les dangers suivants liés à la fumée lors d’un incendie, lequel n’est généralement pas mentionné ?",
+    "options": [
+      "Irritation des voies respiratoires",
+      "Intoxication au monoxyde de carbone",
+      "Production d’acide cyanhydrique (HCN)",
+      "Explosion spontanée de la fumée",
+      "Asphyxie",
+      "Aucune des réponses"
+    ],
+    "correctAnswers": [
+      "Explosion spontanée de la fumée"
+    ]
+  },
+  {
+    "question": "Lors d’un incendie, le feu peut se propager de différentes manières. Quel mode de propagation correspond à un transfert de chaleur par contact direct à travers des matériaux conducteurs ?",
+    "options": [
+      "Conduction",
+      "Convection",
+      "Rayonnement",
+      "Combustion lente",
+      "Ébullition",
+      "Aucune des réponses"
+    ],
+    "correctAnswers": [
+      "Conduction"
+    ]
+  },
+  {
+    "question": "Quel mode de propagation du feu implique un mouvement de gaz ou d’air chaud qui transporte la chaleur et les particules enflammées ?",
+    "options": [
+      "Conduction",
+      "Convection",
+      "Rayonnement",
+      "Évaporation",
+      "Refroidissement",
+      "Aucune des réponses"
+    ],
+    "correctAnswers": [
+      "Convection"
+    ]
+  },
+  {
+    "question": "Le transfert de chaleur sous forme d’ondes (infrarouges, par exemple) décrit quel mode de propagation du feu ?",
+    "options": [
+      "Conduction",
+      "Convection",
+      "Rayonnement",
+      "Oxydation",
+      "Transpiration",
+      "Aucune des réponses"
+    ],
+    "correctAnswers": [
+      "Rayonnement"
+    ]
+  },
+  {
+    "question": "Laquelle de ces affirmations est fausse ou ne correspond pas aux réalités d’un incendie ?",
+    "options": [
+      "La fumée blanche peut être très toxique.",
+      "La foudre est une cause naturelle d’incendie.",
+      "Le monoxyde de carbone peut entraîner une asphyxie rapide.",
+      "La propagation par convection dépend de l’air chaud ascendant.",
+      "Environ 85 % des décès en incendie sont liés à la fumée.",
+      "Aucune des réponses"
+    ],
+    "correctAnswers": [
+      "Aucune des réponses"
+    ]
+  }
+
+
+
+];
+
+
+    // Initialisation des variables du quiz
+    let currentQuestion = 0;
+    let score = 0;
+    let isMuted = false;
+
+    // Références aux éléments HTML
+    const homeDiv = document.getElementById("home");
+    const quizContainer = document.getElementById("quiz-container");
+    const resultPage = document.getElementById("result-page");
+    const questionCounterEl = document.getElementById("question-counter");
+    const questionTextEl = document.getElementById("question-text");
+    const optionsDiv = document.getElementById("options");
+    const resultDiv = document.getElementById("result");
+    const finalScoreEl = document.getElementById("final-score");
+    const finalImage = document.getElementById("final-image");
+    const totalQuestionsSpan = document.getElementById("total-questions");
+    const totalQuestionsResult = document.getElementById("total-questions-result");
+
+    const startBtn = document.getElementById("start-btn");
+    const validateBtn = document.getElementById("validate-btn");
+    const restartBtn = document.getElementById("restart-btn");
+    const indexBtn = document.getElementById("index-btn");
+    const muteBtn = document.getElementById("mute-btn");
+
+    const checkboxSound = document.getElementById("checkbox-sound");
+    const startSound = document.getElementById("start-sound");
+    const correctSound = document.getElementById("correct-sound");
+    const incorrectSound = document.getElementById("incorrect-sound");
+    const incorrectSound2 = document.getElementById("incorrect-sound2");
+
+    // Mise à jour du nombre total de questions
+    totalQuestionsSpan.textContent = quizData.length;
+    totalQuestionsResult.textContent = quizData.length;
+
+    // Précharger certaines images GIF
+    const preloadImages = ["images/ryu.gif", "images/ken.gif", "images/ryu2.gif", "images/ken2.gif"];
+    preloadImages.forEach(src => {
+      const img = new Image();
+      img.src = src;
+    });
+
+    // Fonction de basculement du son
+    function muteToggleHandler() {
+      isMuted = !isMuted;
+      [startSound, correctSound, incorrectSound, checkboxSound,
+       incorrectSound2,
+       document.getElementById("perfect-sound"),
+       document.getElementById("imperfect-sound")
+      ].forEach(audio => { audio.muted = isMuted; });
+      if (isMuted) {
+        this.src = "images/mute-on.gif";
+        this.alt = "Son désactivé";
+      } else {
+        this.src = "images/mute-off.gif";
+        this.alt = "Son activé";
+      }
+    }
+    muteBtn.addEventListener("click", muteToggleHandler);
+    document.addEventListener("DOMContentLoaded", function() {
+      var muteImg = document.getElementById("mute-btn");
+      if (muteImg && muteImg.src.indexOf(".gif") !== -1) {
+        var newMuteImg = muteImg.cloneNode(true);
+        newMuteImg.src = newMuteImg.src.split('?')[0] + '?t=' + new Date().getTime();
+        muteImg.parentNode.replaceChild(newMuteImg, muteImg);
+        newMuteImg.addEventListener("click", muteToggleHandler);
+      }
+    });
+
+    // Démarrage du quiz
+    startBtn.addEventListener("click", () => {
+      if (screen.orientation && screen.orientation.lock) {
+        screen.orientation.lock("portrait").catch(error => { console.log("Le verrouillage de l'orientation a échoué :", error); });
+      }
+      startSound.play();
+      startBtn.style.boxShadow = "0 0 20px rgba(0, 255, 0, 1)";
+      startBtn.style.animation = "blink 0.3s infinite ease-in-out";
+      setTimeout(() => {
+        startBtn.style.animation = "glow-green 1.5s infinite ease-in-out";
+        homeDiv.style.display = "none";
+        quizContainer.style.display = "block";
+        currentQuestion = 0;
+        score = 0;
+        showQuestion();
+      }, 1500);
+    });
+
+    // Affichage d'une question
+    function showQuestion() {
+      resultDiv.innerHTML = "";
+      validateBtn.style.display = "block";
+      const data = quizData[currentQuestion];
+      questionCounterEl.textContent = `${currentQuestion + 1} / ${quizData.length}`;
+      questionTextEl.textContent = data.question;
+      optionsDiv.innerHTML = "";
+      data.options.forEach((option, index) => {
+        const div = document.createElement("div");
+        div.className = "option";
+        const checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+        checkbox.value = option;
+        checkbox.name = "option";
+        checkbox.id = `option_${index}`;
+        checkbox.addEventListener("click", () => { checkboxSound.currentTime = 0; checkboxSound.play(); });
+        const label = document.createElement("label");
+        label.htmlFor = `option_${index}`;
+        label.textContent = option;
+        div.appendChild(checkbox);
+        div.appendChild(label);
+        optionsDiv.appendChild(div);
+      });
+    }
+
+    // Fonction de comparaison des tableaux (ordre sans importance)
+    function arraysEqual(a, b) {
+      if (a.length !== b.length) return false;
+      const sortedA = a.slice().sort();
+      const sortedB = b.slice().sort();
+      return sortedA.every((val, index) => val === sortedB[index]);
+    }
+
+    // Traitement de la validation de la réponse
+    validateBtn.addEventListener("click", () => {
+      const data = quizData[currentQuestion];
+      const selected = Array.from(document.querySelectorAll('input[name="option"]:checked')).map(el => el.value);
+      if (selected.length === 0) { alert("Veuillez sélectionner au moins une réponse"); return; }
+      const isCorrect = arraysEqual(selected, data.correctAnswers);
+      validateBtn.style.display = "none";
+      if (isCorrect) {
+        score++;
+        correctSound.currentTime = 0;
+        correctSound.play();
+        resultDiv.innerHTML = 
+          `<div class="correct-container">
+            <img src="images/ryu.gif" alt="Décoration gauche" class="decor-left">
+            <img src="images/correct.png" alt="Bonne réponse" class="result-image correct">
+            <img src="images/ken.gif" alt="Décoration droite" class="decor-right">
+          </div>`;
+        setTimeout(() => {
+          currentQuestion++;
+          if (currentQuestion < quizData.length) {
+            showQuestion();
+          } else {
+            showResultPage();
+          }
+        }, 2000);
+      } else {
+        const selectedSound = (Math.random() < 0.5) ? incorrectSound : incorrectSound2;
+        selectedSound.currentTime = 0;
+        selectedSound.play();
+        resultDiv.innerHTML = 
+          `<div class="incorrect-container">
+            <img src="images/ryu2.gif" alt="Décoration gauche" class="decor-leftX">
+            <img src="images/incorrect.png" alt="Mauvaise réponse" class="result-image incorrect">
+            <img src="images/ken2.gif" alt="Décoration droite" class="decor-rightX">
+          </div>
+          <div class="incorrect-answer-header">Réponse :</div>
+          <div class="incorrect-answer-text">${data.correctAnswers.join(", ")}</div>`;
+        setTimeout(() => {
+          resultDiv.innerHTML = 
+            `<button id="next-btn">Suivant</button>
+            <div class="incorrect-answer-wrapper">
+              <div class="incorrect-answer-header">Réponse :</div>
+              <div class="incorrect-answer-text">${data.correctAnswers.join(", ")}</div>
+            </div>`;
+          document.getElementById("next-btn").addEventListener("click", () => {
+            currentQuestion++;
+            if (currentQuestion < quizData.length) {
+              showQuestion();
+            } else {
+              showResultPage();
+            }
+          });
+        }, 2500);
+      }
+    });
+
+    // Affichage de la page finale
+    function showResultPage() {
+      quizContainer.style.display = "none";
+      resultPage.style.display = "block";
+      const resultHeader = document.getElementById("result-header");
+      if (score === quizData.length) {
+        restartBtn.style.animation = "borderGlowGreen 2s ease-in-out infinite";
+        resultPage.style.backgroundImage = "url('images/wall.png')";
+        resultHeader.src = "images/youwin.png";
+        resultHeader.style.marginTop = "10px";
+        resultHeader.classList.add("victory-animation");
+        finalScoreEl.style.color = "#00ff1a";
+        finalImage.classList.add("raised");
+        finalImage.style.width = (window.innerWidth <= 480) ? "150px" : "190px";
+        document.getElementById("perfect-sound").currentTime = 0;
+        document.getElementById("perfect-sound").play();
+      } else {
+        restartBtn.style.animation = "borderGlow2 2s ease-in-out infinite";
+        resultPage.style.background = "url('images/wall.png')";
+        resultHeader.src = "images/tryagain.png";
+        resultHeader.style.transform = "translateX(0)";
+        resultHeader.style.marginTop = "10px";
+        finalScoreEl.style.color = "red";
+        resultHeader.classList.add("windmill-shake");
+        finalImage.classList.remove("raised");
+        finalImage.style.width = "190px";
+        finalImage.style.transform = "";
+        setInterval(() => {
+          resultHeader.classList.remove("windmill-shake");
+          void resultHeader.offsetWidth;
+          resultHeader.classList.add("windmill-shake");
+        }, 2800);
+      }
+      resultPage.style.backgroundSize = "cover";
+      resultPage.style.backgroundPosition = "center";
+      finalScoreEl.textContent = `Score : ${score} sur ${quizData.length}`;
+      finalImage.src = (score === quizData.length)
+        ? "images/perfect.gif"
+        : ((Math.random() < 0.5) ? "images/lose1.gif" : "images/lose2.gif");
+      
+      if (finalImage.src.indexOf("lose1.gif") !== -1 && window.innerWidth <= 480) {
+        finalImage.style.transform = "translateY(-10px)";
+      } else {
+        finalImage.style.transform = "";
+      }
+      
+      if (score === quizData.length) {
+        document.getElementById("perfect-sound").currentTime = 0;
+        document.getElementById("perfect-sound").play();
+      } else {
+        document.getElementById("imperfect-sound").currentTime = 0;
+        document.getElementById("imperfect-sound").play();
+      }
+    }
+
+    restartBtn.addEventListener("click", () => { window.location.reload(); });
+
+    document.addEventListener("DOMContentLoaded", function() {
+      var decorImage = document.querySelector('.pikachu');
+      if (decorImage) {
+        var decorGifs = ["images/decor1.gif", "images/decor2.gif"];
+        var randomIndex = Math.floor(Math.random() * decorGifs.length);
+        var randomGif = decorGifs[randomIndex];
+        decorImage.src = randomGif;
+        decorImage.style.visibility = 'visible';
+      }
+    });
+
+    document.addEventListener("DOMContentLoaded", function() {
+      const audios = document.querySelectorAll("audio");
+      audios.forEach(audio => {
+        const initialVolume = audio.volume;
+        audio.volume = 0;
+        audio.play().then(() => {
+          audio.pause();
+          audio.currentTime = 0;
+          audio.volume = initialVolume;
+        }).catch(error => {
+          console.error("Erreur lors du préchargement audio:", error);
+          audio.volume = initialVolume;
+        });
+      });
+    });
+
+    document.addEventListener("DOMContentLoaded", function() {
+      var decorImage = document.querySelector('.pikachu');
+      if (decorImage) {
+        var decorGifs = ["images/decor1.gif", "images/decor2.gif"];
+        var randomIndex = Math.floor(Math.random() * decorGifs.length);
+        var randomGif = decorGifs[randomIndex];
+        decorImage.src = randomGif + '?t=' + new Date().getTime();
+        decorImage.style.visibility = 'visible';
+      }
+    });
+    
+    /* Logique pour le bouton INDEX et le modal correspondant */
+    const indexModal = document.getElementById("index-modal");
+    const closeIndexModal = document.getElementById("close-index-modal");
+
+    // Affiche le modal lorsque l'on clique sur INDEX
+    indexBtn.addEventListener("click", () => {
+      indexModal.style.display = "block";
+    });
+
+    // Ferme le modal lorsqu'on clique sur le bouton "Fermer"
+    closeIndexModal.addEventListener("click", () => {
+      indexModal.style.display = "none";
+    });
+
+    // Pour chaque bouton dans le modal, rediriger vers l'URL spécifiée
+    const indexOptions = document.querySelectorAll("#index-modal .index-option");
+    indexOptions.forEach(button => {
+      button.addEventListener("click", () => {
+        window.location.href = button.dataset.url;
+      });
+    });
+document.addEventListener("DOMContentLoaded", function(){
+  const homeIndexBtn = document.getElementById("home-index-btn");
+  if(homeIndexBtn){
+    homeIndexBtn.addEventListener("click", function(){
+      indexModal.style.display = "block";
+    });
+  }
+});
+
+  </script>
+</body>
+</html>
